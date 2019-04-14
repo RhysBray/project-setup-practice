@@ -1,0 +1,15 @@
+.lol {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  &:active {
+    background-color: greenyellow;
+  }
+  p {
+    color: purple;
+    font-size: 40pt;
+  }
+}
