@@ -6,10 +6,12 @@
   align-items: center;
   background-color: orange;
   &:active {
-    background-color: greenyellow;
+    background-color: red;
   }
   p {
     color: purple;
     font-size: 40pt;
+    -webkit-text-stroke-width: 1.5pt;
+    -webkit-text-stroke-color: black;
   }
 }

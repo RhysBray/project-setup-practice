@@ -3,17 +3,27 @@ import logo from "./logo.svg";
 import "./App.css";
 import Lol from "./Components/lol-component/lol";
 import Rofl from "./Components/rofl-component/rofl";
+import Counter from "./Components/counter/counter";
 import { Switch, Route, Redirect } from "react-router-dom";
+export interface IProps {}
+export interface IState {
+  score: number;
+}
 
-class App extends Component {
+class App extends Component<IProps, IState> {
+  state = { score: 0 };
+
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Lol} />
-        <Route path="/lol" component={Lol} />
-        <Route path="/Rofl" component={Rofl} />
-        <Redirect to="/" />
-      </Switch>
+      <div onClick={this.addToScore}>
+        <Switch>
+          <Route path="/lol" component={Lol} />
+          <Route path="/Rofl" component={Rofl} />
+          <Route exact path="/" component={Lol} />
+          <Redirect to="/" />
+        </Switch>
+        <Counter addToScore={this.state.score} />
+      </div>
       // <div className="App">
       //   <header className="App-header">
       //     <img src={logo} className="App-logo" alt="logo" />
@@ -32,6 +42,10 @@ class App extends Component {
       // </div>
     );
   }
+  addToScore = () => {
+    this.setState({ score: this.state.score += 1 });
+    console.log(this.state.score);
+  };
 }
 
 export default App;
